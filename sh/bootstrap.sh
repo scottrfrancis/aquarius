@@ -27,3 +27,10 @@ apt-get install -y nodejs
 apt-get install -y build-essential
 
 npm install --global gulp-cli
+
+#
+# AWS CLIC
+#
+apt-get install python-pip -y
+pip install --upgrade pip
+pip install awscli
