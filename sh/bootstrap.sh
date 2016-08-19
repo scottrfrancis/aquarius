@@ -7,6 +7,7 @@ apt-get install -y curl
 
 # dev tools
 apt-get install -y git htop
+apt-get install -y jq
 apt-get install -y vim
 apt-get install -y unzip
 
@@ -29,7 +30,7 @@ apt-get install -y build-essential
 npm install --global gulp-cli
 
 #
-# AWS CLIC
+# AWS CLI
 #
 apt-get install python-pip -y
 pip install --upgrade pip
