@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 apt-get update
-apt-get upgrade -y
+#apt-get upgrade -y
+### it's best to run this manually as the grub update can sometimes cause things to get goofy
+#
 
 apt-get install -y curl
 

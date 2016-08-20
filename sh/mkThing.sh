@@ -19,12 +19,12 @@ echo "Things now:"
 aws iot list-things
 
 echo ""; echo "making certs"
-aws iot create-keys-and-certificate --set-as-active --certificate-pem-outfile cert.pem --public-key-outfile publickey.pem --private-key-outfile privkey.pem >cert.json
+aws iot create-keys-and-certificate --set-as-active --certificate-pem-outfile certificate.pem.crt --public-key-outfile public.pem.key --private-key-outfile private.pem.key >cert.json
 CERTARN=$(jq '.certificateArn' cert.json)
 echo $CERTARN
 # echo "Certs now:"
 # aws iot list-certificates
-cp ../aws-iot-rootCA.crt ./
+cp ../root-CA.crt ./
 
 echo ""; echo "making policy"
 aws iot create-policy --policy-name "PubSubToAnyTopic" --policy-document file://../iotpolicy.json 2>/dev/null

@@ -1,3 +1,5 @@
 .vagrant
 aws-iot-device-sdk-js/
 things/*/
+node_modules
+certs
