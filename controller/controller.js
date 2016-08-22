@@ -8,7 +8,25 @@ const thingShadow = require('../aws-iot-device-sdk-js/thing')
 const isUndefined = require('../aws-iot-device-sdk-js/common/lib/is-undefined')
 const cmdLineProcess = require('./lib/cmdline');
 
+const rc = require('./mock')
+
 //begin module
+
+function sendUpdate(shadow, thingName) {
+  // build the update with current valve status
+  var valves = {}
+  var names = rc.getRelayNames()
+
+  for (i in names) {
+    valves[names[i]] = rc.getRelayValue(names[i])
+  }
+
+  shadow.update(thingName, {
+    state: {
+      reported: valves
+    }
+  })
+}
 
 function processTest(args) {
 
@@ -44,15 +62,7 @@ function processTest(args) {
   });
 
   setInterval(function() {
-    thingShadows.update(args.thingName, {
-      state: {
-        reported: {
-          valves: [{
-            1: 0.0
-          }]
-        }
-      }
-    })
+    sendUpdate(thingShadows, args.thingName)
   }, 5000)
 
   thingShadows
@@ -64,11 +74,13 @@ function processTest(args) {
     .on('delta', function(thingName, stateObject) {
       console.log('received delta on ' + thingName + ': ' +
         JSON.stringify(stateObject));
-      thingShadows.update(thingName, {
-        state: {
-          reported: stateObject.state
-        }
-      });
+
+      var valves = stateObject.state.valves;
+      for (v in valves) {
+        rc.setRelayValue(v, valves[v])
+      }
+
+      sendUpdate(thingShadows, args.thingName);
     });
 
   thingShadows

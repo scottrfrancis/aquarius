@@ -12,6 +12,8 @@ var RelayControl = function() {
 
   self._dumpRelayState = _dumpRelayState
 
+  self.getRelayNames = getRelayNames
+
   self.setRelayValue = setRelayValue
   self.getRelayValue = getRelayValue
 
@@ -25,7 +27,12 @@ _init = function() {
   this.relays = {}
 }
 
+getRelayNames = function() {
+  return Object.keys(this.relays)
+}
+
 setRelayValue = function(name, value) {
+  console.log("setting relay " + name + " to " + value)
   this.relays[name] = value
 }
 
