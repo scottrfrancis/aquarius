@@ -1,0 +1,54 @@
+{
+  "name": "aquarius-controller",
+  "description": "Controller Device for Aquarius Water Management",
+  "version": "0.0.1",
+  "author": {
+    "name": "Scott Francis",
+    "email": "",
+    "url": "http://www.scootersoft.info"
+  },
+  "homepage": "https://github.com/scottrfrancis/aquarius",
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.8.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/scottrfrancis/aquarius"
+  },
+  "bugs": {
+    "url": "https://github.com/scottrfrancis/aquarius/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "api",
+    "amazon",
+    "aws",
+    "iot",
+    "mqtt"
+  ],
+  "dependencies": {
+    "mqtt": "1.8.0",
+    "minimist": "1.2.0",
+    "websocket-stream": "^3.1.0",
+    "crypto-js": "3.1.6"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
+    "gulp-coverage": "^0.3.38",
+    "gulp-beautify": "^2.0.0",
+    "sinon": "^1.17.3",
+    "rewire": "^2.5.1"
+  },
+  "scripts": {
+    "test": "node ./node_modules/gulp/bin/gulp.js test --verbose",
+    "browserize": "./scripts/browserize.sh",
+    "beautify": "node ./node_modules/gulp/bin/gulp.js beautify"
+  }
+}
